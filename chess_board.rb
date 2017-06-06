@@ -11,6 +11,7 @@ class Board
     while i < 8
       @board[0][i] = Piece.new
       @board[1][i] = Piece.new
+      @board[2...8].map { |arr| arr[i] = NullPiece.new }
       i += 1
     end
   end
@@ -38,6 +39,8 @@ class Board
     end
     self[end_pos], self[start_pos] = self[start_pos], self[end_pos]
   end
+
+
 end
 
 # a = Board.new

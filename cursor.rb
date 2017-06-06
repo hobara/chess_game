@@ -77,9 +77,33 @@ class Cursor
 
   def handle_key(key)
     case key
-      when
+    when :return, :space
+      return @cursor_pos
+    when :left, :right, :up, :down
+      pos = MOVES[key]
+      update_pos(pos)
+      return nil
+    when :ctrl_c
+      Process.exit(0)
+    end
   end
 
   def update_pos(diff)
+    copy_cursor = @cursor_pos.dup
+    copy_cursor[0] = @cursor_pos[0] + diff[0]
+    copy_cursor[1] = @cursor_pos[1] + diff[1]
+    p copy_cursor
+    if in_bounds?(copy_cursor)
+      @cursor_pos = copy_cursor
+    else
+      p "Inavlid position, out of bound!"
+      @cursor_pos
+    end
   end
+
+  def in_bounds?(pos)
+    pos[0].between?(0,8) && pos[1].between?(0,8)
+  end
+
+
 end
