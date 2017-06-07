@@ -11,6 +11,7 @@ class Display
   end
 
   def render
+    system('clear')
     @board.board.each_with_index do |row, idx1|
       row.each_with_index do |square, idx2|
         print "|"
@@ -25,15 +26,16 @@ class Display
       end
       print "\n"
     end
+    puts "-" * 24
   end
 
   def move_cursor_around
     count = 0
-    while count <= 10
+    while count <= 24
       self.render
       @cursor.get_input
       self.render
-      count += 1
+      # count += 1
     end
   end
 

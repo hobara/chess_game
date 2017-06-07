@@ -42,14 +42,3 @@ class Board
 
 
 end
-
-# a = Board.new
-# p a.board
-# # p a[[0,0]]
-# # p a.board[0][0]
-# # p a.board
-# # p a.move_piece([0,0],[5,5])
-# p a[[5,5]]
-# p a.move_piece([7,7],[5,5])
-# p a[[0,0]]
-# p a[[5,5]]
